@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "po-simple-login": {
+    "po-simple-i18n": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,15 +13,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/po-simple-login",
+            "outputPath": "dist/po-simple-i18n",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./node_modules/@po-ui/style/css/po-theme-default.min.css",
               "src/styles.css"
@@ -65,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "po-simple-login:build:production"
+              "browserTarget": "po-simple-i18n:build:production"
             },
             "development": {
-              "browserTarget": "po-simple-login:build:development"
+              "browserTarget": "po-simple-i18n:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "po-simple-login:build"
+            "browserTarget": "po-simple-i18n:build"
           }
         },
         "test": {
@@ -86,10 +83,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
               "./node_modules/@po-ui/style/css/po-theme-default.min.css",
               "src/styles.css"
