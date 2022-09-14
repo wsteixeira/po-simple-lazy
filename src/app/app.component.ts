@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PoMenuItem } from '@po-ui/ng-components';
+import { PoMenuItem, PoToolbarAction } from '@po-ui/ng-components';
 import { AppService } from './app.service';
 
 @Component({
@@ -9,6 +9,11 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  readonly actions: Array<PoToolbarAction> = [
+    { label: 'Português' },
+    { label: 'Inglês' },
+  ];
+
   readonly menus: Array<PoMenuItem> = [
     {
       icon: 'po-icon po-icon-home',
