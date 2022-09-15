@@ -1,15 +1,22 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { PoLanguage, PoNotificationService } from '@po-ui/ng-components';
+import { TranslateService } from '@ngx-translate/core';
+import { Buffer } from 'buffer';
+
+import {
+  PoI18nService,
+  PoLanguage,
+  PoNotificationService,
+} from '@po-ui/ng-components';
 import {
   PoPageLogin,
   PoPageLoginAuthenticationType,
 } from '@po-ui/ng-templates';
-import { AuthService } from 'src/app/guard/auth.service';
 
+import { AuthService } from 'src/app/guard/auth.service';
 import { LoginService } from './login.service';
-import { Buffer } from 'buffer';
+import { AppComponent } from '../app.component';
 
 @Component({
   selector: 'app-login',
@@ -19,8 +26,10 @@ import { Buffer } from 'buffer';
 export class LoginComponent implements OnDestroy, OnInit {
   readonly languages: Array<PoLanguage> = [
     { language: 'pt', description: 'Português' },
+    { language: 'en', description: 'English' },
   ];
 
+  literals: any = {};
   logo = './assets/images/po_color_bg.png';
 
   // true - Login usando o serviço do template
@@ -37,18 +46,19 @@ export class LoginComponent implements OnDestroy, OnInit {
   passwordErrors: Array<string> = [];
 
   constructor(
+    private poI18nService: PoI18nService,
+    private appComponet: AppComponent,
     private loginService: LoginService,
     private authService: AuthService,
     private poNotification: PoNotificationService,
-    private router: Router
+    private router: Router,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
     this.authenticationUrl = this.loginService.getEndpoint();
     this.authService.logout();
-    this.poNotification.information(
-      'Você pode usar - [Login: admin] / [Senha: admin]'
-    );
+    this.setLanguage();
   }
 
   ngOnDestroy() {
@@ -80,6 +90,28 @@ export class LoginComponent implements OnDestroy, OnInit {
 
   passwordChange() {
     this.passwordErrors = [];
+  }
+
+  changeLanguage(language?: PoLanguage) {
+    if (language?.language === 'en') {
+      this.poI18nService.setLanguage('en-US');
+    } else {
+      this.poI18nService.setLanguage('pt-BR');
+    }
+    this.setLanguage();
+  }
+
+  setLanguage() {
+    if (this.poI18nService.getShortLanguage()) {
+      this.translate.use(this.poI18nService.getShortLanguage());
+      this.poI18nService
+        .getLiterals()
+        .subscribe((literals) => (this.literals = literals));
+      this.appComponet.setMenu();
+      this.poNotification.information(
+        `${this.literals.youCanUse} - [Login: admin] / [${this.literals.password}: admin]`
+      );
+    }
   }
 
   private handleResponse(response: any) {

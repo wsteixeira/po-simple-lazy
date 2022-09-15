@@ -6,6 +6,7 @@
   [p-logo]="logo"
   [p-hide-remember-user]="true"
   p-register-url="/user/new"
+  (p-language-change)="changeLanguage($event)"
 >
 </po-page-login>
 
@@ -17,8 +18,10 @@
   [p-logo]="logo"
   [p-hide-remember-user]="true"
   p-register-url="/user/new"
+  (p-language-change)="changeLanguage($event)"
   (p-login-change)="loginChange()"
   (p-login-submit)="checkLogin($event)"
   (p-password-change)="passwordChange()"
+
 >
 </po-page-login>
