@@ -2,4 +2,27 @@
   p-title="Home"
   [p-breadcrumb]="breadcrumb"
 >
+
+  <po-widget
+    [p-no-shadow]="true"
+    p-primary-label="Começar a usar"
+    (p-primary-action)="openExternalLink('https://po-ui.io/guides/getting-started')"
+    p-secondary-label="Ver no Github"
+    (p-secondary-action)="openExternalLink('https://github.com/po-ui')"
+  >
+
+    <div class="po-md-12">
+      <h1><a class="home-link" href="https://po-ui.io/">PO UI</a></h1>
+      <br>
+      <h2>Biblioteca de componentes baseado em Angular</h2>
+      <br>
+      <p>
+        Um projeto <span class="font-code">open source</span> que utiliza tecnologias atuais como
+        <a class="home-link" href="https://angular.io/">Angular</a> e
+        <a class="home-link" href="https://www.typescriptlang.org">Typescript.</a>
+      </p>
+    </div>
+
+  </po-widget>
+
 </po-page-default>

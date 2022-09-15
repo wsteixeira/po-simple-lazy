@@ -14,4 +14,8 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  openExternalLink(url: any) {
+    window.open(url, '_blank');
+  }
 }
