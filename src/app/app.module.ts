@@ -24,6 +24,8 @@ import { LocaleProvider } from './shared/locale.provider';
 localStorage.removeItem('PO_DEFAULT_LANGUAGE');
 localStorage.removeItem('PO_USER_LOCALE');
 
+localStorage.removeItem('PO_USER_LOGIN');
+
 const i18nConfig: PoI18nConfig = {
   default: {
     //    language: 'pt-BR',

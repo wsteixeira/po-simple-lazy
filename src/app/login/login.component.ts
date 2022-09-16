@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -8,6 +8,7 @@ import {
   PoI18nService,
   PoLanguage,
   PoNotificationService,
+  PoPageDefaultComponent,
 } from '@po-ui/ng-components';
 import {
   PoPageLogin,
@@ -24,6 +25,9 @@ import { AppComponent } from '../app.component';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnDestroy, OnInit {
+  @ViewChild(PoPageDefaultComponent, { static: true })
+  home!: PoPageDefaultComponent;
+
   readonly languages: Array<PoLanguage> = [
     { language: 'pt', description: 'Português' },
     { language: 'en', description: 'English' },
@@ -66,7 +70,7 @@ export class LoginComponent implements OnDestroy, OnInit {
       sessionStorage.getItem('PO_USER_LOGIN') || '{}'
     );
     if (userAuth?.user) {
-      this.authService.login(userAuth.user);
+      this.authService.login(userAuth);
     }
     sessionStorage.removeItem('PO_USER_LOGIN');
   }
