@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 
-import { PoMenuItem, PoToolbarAction } from '@po-ui/ng-components';
+import {
+  PoI18nService,
+  PoMenuComponent,
+  PoMenuItem,
+  PoToolbarAction,
+} from '@po-ui/ng-components';
 import { AppService } from './app.service';
 
 @Component({
@@ -9,43 +15,62 @@ import { AppService } from './app.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  @ViewChild(PoMenuComponent, { static: true }) menu!: PoMenuComponent;
+
   readonly actions: Array<PoToolbarAction> = [
     { label: 'Português' },
     { label: 'Inglês' },
   ];
 
-  readonly menus: Array<PoMenuItem> = [
-    {
-      icon: 'po-icon po-icon-home',
-      label: 'Home',
-      link: '/home',
-      shortLabel: 'Home',
-    },
-    {
-      icon: 'po-icon po-icon-users',
-      label: 'Cadastro de Usuários',
-      link: '/user',
-      shortLabel: 'Usuários',
-    },
-    {
-      icon: 'po-icon po-icon-user',
-      label: 'Login',
-      link: '/login',
-      shortLabel: 'Login',
-    },
-    {
-      icon: 'po-icon po-icon-exit',
-      label: 'Logout',
-      link: '/login',
-      shortLabel: 'Logout',
-    },
-  ];
-
   logo = './assets/images/po_color_font.png';
+  literals: any = {};
+  menus: Array<PoMenuItem> = [];
+  title!: string;
 
-  constructor(private appService: AppService) {}
+  constructor(
+    private appService: AppService,
+    private poI18nService: PoI18nService,
+    private translate: TranslateService
+  ) {}
 
   ngOnInit(): void {
     this.appService.getHead().subscribe(); //Apenas para forçar o inicio da API no Heroku antes processo de login;
+    this.translate.use(navigator.language);
+    this.setMenu();
+  }
+
+  setMenu() {
+    this.poI18nService
+      .getLiterals()
+      .subscribe((literals) => (this.literals = literals));
+    this.title = this.literals.pouiApplication;
+    this.menu.filter = false; // Forçar a troca do idioma do placeholher do filter
+    setTimeout(() => (this.menu.filter = true), 10); // Forçar a troca do idioma do placeholher do filter
+    this.menus = [
+      {
+        icon: 'po-icon po-icon-home',
+        label: this.literals.home,
+        link: '/home',
+        shortLabel: this.literals.home,
+      },
+      {
+        icon: 'po-icon po-icon-users',
+        label: this.literals.users,
+        link: '/user',
+        shortLabel: this.literals.users,
+      },
+      {
+        icon: 'po-icon po-icon-user',
+        label: 'Login',
+        link: '/login',
+        shortLabel: 'Login',
+      },
+      {
+        icon: 'po-icon po-icon-exit',
+        label: 'Logout',
+        link: '/login',
+        shortLabel: 'Logout',
+      },
+    ];
   }
 }
