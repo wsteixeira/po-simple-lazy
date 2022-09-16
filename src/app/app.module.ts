@@ -4,8 +4,6 @@ import { RouterModule } from '@angular/router';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 
-import { TranslateModule } from '@ngx-translate/core';
-
 import { PoI18nConfig, PoI18nModule, PoModule } from '@po-ui/ng-components';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
 
@@ -19,7 +17,6 @@ import { LoginComponent } from './login/login.component';
 
 import { generalEn } from './i18n/general-en';
 import { generalPt } from './i18n/general-pt';
-import { LocaleProvider } from './shared/locale.provider';
 
 localStorage.removeItem('PO_DEFAULT_LANGUAGE');
 localStorage.removeItem('PO_USER_LOCALE');
@@ -28,9 +25,10 @@ localStorage.removeItem('PO_USER_LOGIN');
 
 const i18nConfig: PoI18nConfig = {
   default: {
-    //    language: 'pt-BR',
-    //    context: 'general',
-    //    cache: true
+    //language: 'pt-BR',
+    //language: 'en-US',
+    //context: 'general',
+    //cache: true
   },
   contexts: {
     general: {
@@ -58,13 +56,8 @@ registerLocaleData(ptBr);
     PoI18nModule.config(i18nConfig),
     PoModule,
     PoTemplatesModule,
-    TranslateModule.forRoot(),
   ],
-  providers: [
-    //  { provide: LOCALE_ID, useValue: navigator.language },
-    //  { provide: DEFAULT_CURRENCY_CODE, useValue: 'BRL' },
-    LocaleProvider,
-  ],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

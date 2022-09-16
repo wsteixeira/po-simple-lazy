@@ -75,6 +75,7 @@ export class UserListComponent implements OnInit {
   }
 
   private setFields(): void {
+    console.log(this.poI18nService.getShortLanguage());
     this.fields = [
       { property: 'id', key: true, visible: false },
       {
@@ -87,7 +88,8 @@ export class UserListComponent implements OnInit {
       {
         property: 'isActive',
         label: this.literals.active,
-        type: 'boolean',
+        type:
+          this.poI18nService.getShortLanguage() == 'pt' ? 'boolean' : undefined, // ajusta bug
         duplicate: true,
       },
     ];

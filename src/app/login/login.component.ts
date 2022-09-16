@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { TranslateService } from '@ngx-translate/core';
 import { Buffer } from 'buffer';
 
 import {
@@ -55,8 +54,7 @@ export class LoginComponent implements OnDestroy, OnInit {
     private loginService: LoginService,
     private authService: AuthService,
     private poNotification: PoNotificationService,
-    private router: Router,
-    private translate: TranslateService
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -107,7 +105,6 @@ export class LoginComponent implements OnDestroy, OnInit {
 
   setLanguage() {
     if (this.poI18nService.getShortLanguage()) {
-      this.translate.use(this.poI18nService.getShortLanguage());
       this.poI18nService
         .getLiterals()
         .subscribe((literals) => (this.literals = literals));

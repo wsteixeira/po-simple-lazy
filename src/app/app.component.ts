@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 
 import {
   PoI18nService,
@@ -29,13 +28,11 @@ export class AppComponent implements OnInit {
 
   constructor(
     private appService: AppService,
-    private poI18nService: PoI18nService,
-    private translate: TranslateService
+    private poI18nService: PoI18nService
   ) {}
 
   ngOnInit(): void {
     this.appService.getHead().subscribe(); //Apenas para forçar o inicio da API no Heroku antes processo de login;
-    this.translate.use(navigator.language);
     this.setMenu();
   }
 
