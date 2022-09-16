@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PoBreadcrumb } from '@po-ui/ng-components';
-
+import {
+  PoBreadcrumb,
+  PoBreadcrumbItem,
+  PoI18nService,
+} from '@po-ui/ng-components';
 import {
   PoPageDynamicDetailActions,
   PoPageDynamicDetailField,
@@ -19,26 +22,48 @@ export class UserDetailComponent implements OnInit {
     remove: '/user',
   };
 
-  readonly breadcrumb: PoBreadcrumb = {
-    items: [
-      { label: 'Home', link: '/' },
-      { label: 'Usuário', link: '/user' },
-      { label: 'Detalhe' },
-    ],
-  };
-
-  readonly fields: Array<PoPageDynamicDetailField> = [
-    { property: 'id', key: true, visible: false },
-    { property: 'firstName', label: 'Nome' },
-    { property: 'lastName', label: 'Sobrenome' },
-    { property: 'email', label: 'E-mail' },
-    { property: 'isActive', label: 'Ativo', type: 'boolean' },
-  ];
-
+  fields!: Array<PoPageDynamicDetailField>;
+  breadcrumb: PoBreadcrumb = { items: [] };
+  breadcrumbItem!: PoBreadcrumbItem;
   apiService!: string;
-  constructor(private userService: UserService) {}
+  literals: any;
+  title!: string;
+
+  constructor(
+    private userService: UserService,
+    private poI18nService: PoI18nService
+  ) {
+    this.poI18nService
+      .getLiterals()
+      .subscribe((literals) => (this.literals = literals));
+  }
 
   ngOnInit() {
     this.apiService = this.userService.getEndpoint();
+    this.title = this.literals.userDetail;
+    this.setBreadcrumb();
+    this.setFields();
+  }
+
+  private setBreadcrumb(): void {
+    this.breadcrumbItem = { label: this.literals.home, link: '/' };
+    this.breadcrumb.items.push(this.breadcrumbItem);
+    this.breadcrumbItem = {
+      label: this.literals.user,
+      link: '/authentication/user',
+    };
+    this.breadcrumb.items.push(this.breadcrumbItem);
+    this.breadcrumbItem = { label: this.literals.detail };
+    this.breadcrumb.items.push(this.breadcrumbItem);
+  }
+
+  private setFields(): void {
+    this.fields = [
+      { property: 'id', key: true, visible: false },
+      { property: 'firstName', label: this.literals.firstName },
+      { property: 'lastName', label: this.literals.lastName },
+      { property: 'email', label: this.literals.email },
+      { property: 'isActive', label: this.literals.active, type: 'boolean' },
+    ];
   }
 }

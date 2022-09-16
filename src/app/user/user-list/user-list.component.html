@@ -1,9 +1,14 @@
 <po-page-dynamic-table
-  p-title="Lista de Usuários"
+  [p-title]="title"
+  [p-actions-right]="actionsRight"
   [p-actions]="actions"
   [p-actions-right]="true"
   [p-breadcrumb]="breadcrumb"
   [p-fields]="fields"
+  [p-keep-filters]="true"
+  [p-page-custom-actions]="pageCustomActions"
+  [p-table-custom-actions]="tableCustomActions"
   [p-service-api]="apiService"
 >
 </po-page-dynamic-table>
+
