@@ -8,7 +8,6 @@ export const generalEn = {
   lastName: 'Last Name',
   no: 'No',
   password: 'Password',
-  pouiApplication: 'PO-UI Application',
   refresh: 'Refresh',
   startUsing: 'Start using',
   textLibrary: 'Angular-based component library.',

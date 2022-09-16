@@ -16,11 +16,6 @@ import { AppService } from './app.service';
 export class AppComponent implements OnInit {
   @ViewChild(PoMenuComponent, { static: true }) menu!: PoMenuComponent;
 
-  readonly actions: Array<PoToolbarAction> = [
-    { label: 'Português' },
-    { label: 'Inglês' },
-  ];
-
   logo = './assets/images/po_color_font.png';
   literals: any = {};
   menus: Array<PoMenuItem> = [];

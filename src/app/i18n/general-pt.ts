@@ -8,7 +8,6 @@ export const generalPt = {
   lastName: 'Sobrenome',
   no: 'Não',
   password: 'Senha',
-  pouiApplication: 'Aplicação PO-UI',
   refresh: 'Atualizar',
   startUsing: 'Começar a usar',
   textLibrary: 'Biblioteca de componentes baseado em Angular.',
