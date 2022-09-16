@@ -75,7 +75,6 @@ export class UserListComponent implements OnInit {
   }
 
   private setFields(): void {
-    console.log(this.poI18nService.getShortLanguage());
     this.fields = [
       { property: 'id', key: true, visible: false },
       {
