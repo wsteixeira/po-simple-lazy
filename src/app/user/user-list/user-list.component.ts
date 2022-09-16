@@ -1,4 +1,3 @@
-import { Platform } from '@angular/cdk/platform';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   PoBreadcrumb,
@@ -32,7 +31,6 @@ export class UserListComponent implements OnInit {
     removeAll: true,
   };
 
-  actionsRight!: boolean;
   fields!: Array<PoPageDynamicTableFilters>;
   breadcrumb: PoBreadcrumb = { items: [] };
   breadcrumbItem!: PoBreadcrumbItem;
@@ -44,8 +42,7 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private poI18nService: PoI18nService,
-    private platform: Platform
+    private poI18nService: PoI18nService
   ) {
     this.poI18nService
       .getLiterals()
@@ -53,7 +50,6 @@ export class UserListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.actionsRight = !this.platform.IOS && !this.platform.ANDROID;
     this.apiService = this.userService.getEndpoint();
     this.pageCustomActions = [
       {
