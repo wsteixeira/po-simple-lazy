@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PoBreadcrumb } from '@po-ui/ng-components';
+import {
+  PoBreadcrumb,
+  PoBreadcrumbItem,
+  PoI18nService,
+} from '@po-ui/ng-components';
+import { AuthService } from '../guard/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,15 +12,33 @@ import { PoBreadcrumb } from '@po-ui/ng-components';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  readonly breadcrumb: PoBreadcrumb = {
-    items: [{ label: 'Home', link: '/' }],
-  };
+  breadcrumb: PoBreadcrumb = { items: [] };
+  breadcrumbItem!: PoBreadcrumbItem;
+  userName: any;
+  literals: any;
 
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private poI18nService: PoI18nService
+  ) {
+    poI18nService
+      .getLiterals()
+      .subscribe((literals) => (this.literals = literals));
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authService.getLoggedUser.subscribe(
+      (response: any) => (this.userName = response.name)
+    );
+    this.setBreadcrumb();
+  }
 
   openExternalLink(url: any) {
     window.open(url, '_blank');
+  }
+
+  private setBreadcrumb(): void {
+    this.breadcrumbItem = { label: this.literals?.home, link: undefined };
+    this.breadcrumb.items.push(this.breadcrumbItem);
   }
 }
