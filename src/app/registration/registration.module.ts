@@ -9,9 +9,10 @@ import { RegistrationRoutingModule } from './registration-routing.module';
 import { StateDetailComponent } from './state/state-detail/state-detail.component';
 import { StateEditComponent } from './state/state-edit/state-edit.component';
 import { StateListComponent } from './state/state-list/state-list.component';
+import { CityListComponent } from './city/city-list/city-list.component';
 
 @NgModule({
-  declarations: [StateDetailComponent, StateEditComponent, StateListComponent],
+  declarations: [StateDetailComponent, StateEditComponent, StateListComponent, CityListComponent],
   imports: [
     CommonModule,
     PoTemplatesModule,

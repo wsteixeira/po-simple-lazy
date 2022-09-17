@@ -51,6 +51,7 @@ export class AppComponent implements OnInit {
         shortLabel: this.literals.registrations,
         subItems: [
           { label: this.literals.states, link: '/registration/state' },
+          { label: this.literals.cities, link: '/registration/city' },
         ],
       },
       {
