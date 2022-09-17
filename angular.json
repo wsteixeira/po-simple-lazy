@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "po-simple-i18n": {
+    "po-simple-lazy": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/po-simple-i18n",
+            "outputPath": "dist/po-simple-lazy",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "po-simple-i18n:build:production"
+              "browserTarget": "po-simple-lazy:build:production"
             },
             "development": {
-              "browserTarget": "po-simple-i18n:build:development"
+              "browserTarget": "po-simple-lazy:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "po-simple-i18n:build"
+            "browserTarget": "po-simple-lazy:build"
           }
         },
         "test": {
