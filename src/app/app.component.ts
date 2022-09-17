@@ -54,13 +54,13 @@ export class AppComponent implements OnInit {
       {
         icon: 'po-icon po-icon-user',
         label: 'Login',
-        link: '/login',
+        link: '/authentication/login',
         shortLabel: 'Login',
       },
       {
         icon: 'po-icon po-icon-exit',
         label: 'Logout',
-        link: '/login',
+        link: '/authentication/login',
         shortLabel: 'Logout',
       },
     ];

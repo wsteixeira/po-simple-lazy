@@ -18,7 +18,6 @@ import { HomeComponent } from './home/home.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
-import { LoginComponent } from './login/login.component';
 
 import { generalEn } from './i18n/general-en';
 import { generalPt } from './i18n/general-pt';
@@ -49,7 +48,6 @@ registerLocaleData(ptBr);
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
     UserListComponent,
     UserDetailComponent,
     UserEditComponent,

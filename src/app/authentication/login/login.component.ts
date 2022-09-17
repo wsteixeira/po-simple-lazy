@@ -16,7 +16,7 @@ import {
 
 import { AuthService } from 'src/app/guard/auth.service';
 import { LoginService } from './login.service';
-import { AppComponent } from '../app.component';
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-login',
