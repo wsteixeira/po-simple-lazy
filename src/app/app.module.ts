@@ -1,10 +1,15 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { registerLocaleData } from '@angular/common';
 import ptBr from '@angular/common/locales/pt';
 
-import { PoI18nConfig, PoI18nModule, PoModule } from '@po-ui/ng-components';
+import {
+  PoI18nConfig,
+  PoI18nModule,
+  PoI18nService,
+  PoModule,
+} from '@po-ui/ng-components';
 import { PoTemplatesModule } from '@po-ui/ng-templates';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -57,7 +62,13 @@ registerLocaleData(ptBr);
     PoModule,
     PoTemplatesModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      deps: [PoI18nService],
+      useFactory: (poI18nService: any) => poI18nService.getLanguage(),
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
