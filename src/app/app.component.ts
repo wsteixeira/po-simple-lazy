@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
       {
         icon: 'po-icon po-icon-users',
         label: this.literals.users,
-        link: '/user',
+        link: '/authentication/user',
         shortLabel: this.literals.users,
       },
       {

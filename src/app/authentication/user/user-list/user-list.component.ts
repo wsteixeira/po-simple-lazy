@@ -23,10 +23,10 @@ export class UserListComponent implements OnInit {
   dynamicTable!: PoPageDynamicTableComponent;
 
   readonly actions: PoPageDynamicTableActions = {
-    detail: '/user/detail/:id',
-    duplicate: '/user/new',
-    edit: '/user/edit/:id',
-    new: '/user/new',
+    detail: '/authentication/user/detail/:id',
+    duplicate: '/authentication/user/new',
+    edit: '/authentication/user/edit/:id',
+    new: '/authentication/user/new',
     remove: true,
     removeAll: true,
   };

@@ -18,9 +18,9 @@ import { UserService } from '../user.service';
 })
 export class UserEditComponent implements OnInit {
   readonly actions: PoPageDynamicEditActions = {
-    cancel: '/user',
-    save: '/user',
-    saveNew: '/user/new',
+    cancel: '/authentication/user',
+    save: '/authentication/user',
+    saveNew: '/authentication/user/new',
   };
 
   fields!: Array<PoPageDynamicEditField>;
@@ -68,7 +68,7 @@ export class UserEditComponent implements OnInit {
     this.breadcrumb.items.push(this.breadcrumbItem);
     this.breadcrumbItem = {
       label: this.literals.user,
-      link: '/user',
+      link: '/authentication/user',
     };
     this.breadcrumb.items.push(this.breadcrumbItem);
     this.breadcrumbItem = { label: this.title.split(' ')[0] };

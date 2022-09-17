@@ -15,9 +15,6 @@ import { PoTemplatesModule } from '@po-ui/ng-templates';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
-import { UserListComponent } from './user/user-list/user-list.component';
-import { UserDetailComponent } from './user/user-detail/user-detail.component';
-import { UserEditComponent } from './user/user-edit/user-edit.component';
 
 import { generalEn } from './i18n/general-en';
 import { generalPt } from './i18n/general-pt';
@@ -45,13 +42,7 @@ const i18nConfig: PoI18nConfig = {
 registerLocaleData(ptBr);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    UserListComponent,
-    UserDetailComponent,
-    UserEditComponent,
-  ],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

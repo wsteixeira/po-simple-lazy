@@ -17,9 +17,9 @@ import { UserService } from '../user.service';
 })
 export class UserDetailComponent implements OnInit {
   readonly actions: PoPageDynamicDetailActions = {
-    back: '/user',
-    edit: '/user/edit/:id',
-    remove: '/user',
+    back: '/authentication/user',
+    edit: '/authentication/user/edit/:id',
+    remove: '/authentication/user',
   };
 
   fields!: Array<PoPageDynamicDetailField>;
@@ -50,7 +50,7 @@ export class UserDetailComponent implements OnInit {
     this.breadcrumb.items.push(this.breadcrumbItem);
     this.breadcrumbItem = {
       label: this.literals.user,
-      link: '/user',
+      link: '/authentication/user',
     };
     this.breadcrumb.items.push(this.breadcrumbItem);
     this.breadcrumbItem = { label: this.literals.detail };
