@@ -5,6 +5,7 @@ export const generalEn = {
   and: 'and',
   cities: 'Cities',
   city: 'City',
+  cityDetail: 'City Detail',
   cityList: 'City List',
   country: 'Country',
   detail: 'Detail',

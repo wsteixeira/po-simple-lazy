@@ -5,6 +5,7 @@ export const generalPt = {
   and: 'e',
   cities: 'Cidades',
   city: 'Cidade',
+  cityDetail: 'Detalhe da Cidade',
   cityList: 'Lista de Cidades',
   country: 'País',
   detail: 'Detalhe',
