@@ -10,6 +10,7 @@ import {
   PoPageDynamicTableCustomAction,
   PoPageDynamicTableFilters,
 } from '@po-ui/ng-templates';
+import { StateService } from '../../state/state.service';
 import { CityService } from '../city.service';
 
 @Component({
@@ -40,6 +41,7 @@ export class CityListComponent implements OnInit {
 
   constructor(
     private cityService: CityService,
+    private stateService: StateService,
     private poI18nService: PoI18nService
   ) {
     this.poI18nService
@@ -72,7 +74,21 @@ export class CityListComponent implements OnInit {
     this.fields = [
       { property: 'id', key: true, visible: false },
       { property: 'city', label: this.literals.city, duplicate: true },
-      { property: 'stateId', visible: false, duplicate: true },
+      {
+        property: 'stateId',
+        label: this.literals.state,
+        visible: false,
+        searchService: this.stateService.getEndpoint(),
+        fieldValue: 'id',
+        fieldLabel: 'stateName',
+        columns: [
+          { property: 'state', label: this.literals.st, width: '20%' },
+          { property: 'stateName', label: this.literals.name },
+          { property: 'region', label: this.literals.region, width: '20%' },
+        ],
+        filter: true,
+        duplicate: true,
+      },
       { property: 'state.state', label: this.literals.st },
       { property: 'state.stateName', label: this.literals.state },
       { property: 'state.region', label: this.literals.region },

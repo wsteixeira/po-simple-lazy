@@ -1,5 +1,6 @@
 export const generalPt = {
   active: 'Ativo',
+  addCity: 'Incluir Cidade',
   addState: 'Incluir Estado',
   addUser: 'Incluir Usuário',
   and: 'e',
@@ -9,6 +10,7 @@ export const generalPt = {
   cityList: 'Lista de Cidades',
   country: 'País',
   detail: 'Detalhe',
+  editCity: 'Editar Cidade',
   editState: 'Editar Estado',
   editUser: 'Editar Usuário',
   email: 'E-mail',

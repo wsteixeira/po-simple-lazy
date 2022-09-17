@@ -1,5 +1,6 @@
 export const generalEn = {
   active: 'Active',
+  addCity: 'Add City',
   addState: 'Add State',
   addUser: 'Add User',
   and: 'and',
@@ -9,6 +10,7 @@ export const generalEn = {
   cityList: 'City List',
   country: 'Country',
   detail: 'Detail',
+  editCity: 'Edit City',
   editState: 'Edit State',
   editUser: 'Edit User',
   email: 'E-mail',
