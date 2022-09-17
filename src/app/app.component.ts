@@ -46,6 +46,14 @@ export class AppComponent implements OnInit {
         shortLabel: this.literals.home,
       },
       {
+        icon: 'po-icon po-icon-edit',
+        label: this.literals.registrations,
+        shortLabel: this.literals.registrations,
+        subItems: [
+          { label: this.literals.states, link: '/registration/state' },
+        ],
+      },
+      {
         icon: 'po-icon po-icon-users',
         label: this.literals.users,
         link: '/authentication/user',
